@@ -104,20 +104,20 @@ $(document).ready(function(){
                             "<tr>" +
                                 "<td>"+value.nama+"</th>\n" +
                                 "<td>"+value.harga+"</th>\n" +
-                                "<td>"+highestprice+"</th>\n"+
                                 price.push(value.harga);
                                 if (value.harga > highestprice) {
                                     productname = value.nama;
                                     highestprice = value.harga;
                                 }
-                            "</tr>"
+                            "</tr>";
                     });
-                    document.getElementById("maxprice").innerHTML = highestprice;
-                    document.getElementById("maxname").innerHTML = productname;
+                    content += 
+                        "<tr>" +
+                            "<td><b>Product with highest price<br>"+productname+"</b></th>\n" +
+                            "<td><b>"+highestprice+"</b></th>\n" +
+                        "</tr>";
                     $('#bodyhasil').html(content);
                     console.log(price);
-                    // var maxpricebukalapak = BiggerPrice(price);
-                    // console.log(maxpricebukalapak);
                     console.log(productname);
                     console.log(highestprice);
                 },
@@ -127,13 +127,6 @@ $(document).ready(function(){
                 }
             })
     })
-    
-    // function BiggerPrice(price){
-    //     return function(evalue, index, array)
-    //     {
-    //     return (evalue >= val);
-    //     };
-    // }
 
     $("#gethasil2").click(function() {
         tabmodiv=document.getElementById('bodyhasil2');
