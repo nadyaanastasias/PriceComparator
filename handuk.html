@@ -43,7 +43,10 @@
                     <button class="btn btn-primary" style="width:190px;" id = "gethasil2">Show Orami</button>
                 </div>
             </form>
-            
+
+            <div class="compare">
+                    <input id = "compare" type="button" value="Compare">
+             </div>
             <!-- Tabel Hasil -->                   
             <table id="tabelhasil" class="table table-bordered" style="margin-top: 10px; width: 400px; text-align: center; margin-left: 275px; ">
                 <thead id="headtabelhasil">
@@ -80,6 +83,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+
+var price = []
 $("#gethasil").click(function() {
         tabmodiv=document.getElementById('bodyhasil');
             var endpoint = 'http://52.23.248.58:8080/tas';
@@ -96,15 +101,31 @@ $("#gethasil").click(function() {
                         "<tr>" +
                             "<td>"+value.nama+"</th>\n" +
                             "<td>"+value.harga+"</th>\n" +
+                            price.push(value.harga);
                         "</tr>"
                 });
                 $('#bodyhasil').html(content);
+                console.log(price);
+                var maxpricebukalapak = BiggerPrice(price);
+                console.log(maxpricebukalapak)
             },
             error: function (response) {
                 console.log(response);
+                
             }
         })
 })
+
+function BiggerPrice(price)
+   {
+     return function(evalue, index, array)
+     {
+     return (evalue >= val);
+     };
+   }
+
+$("compare").click(BiggerPrice(price));
+
 $("#gethasil2").click(function() {
         tabmodiv=document.getElementById('bodyhasil2');
             content=""
