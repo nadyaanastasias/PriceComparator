@@ -39,21 +39,13 @@
           <div class="jumbotron"  style="padding:40px;margin-top:100px;">
             <form method = "GET" action = "#">
                 <div id ="tombolhasil" style="text-align: center; margin-top:35px">
-                    <button class="btn btn-primary" style="width:190px;" id = "gethasil">Compare</button>
+                    <button class="btn btn-primary" style="width:190px;" id = "gethasil">Show Bukalapak</button>
+                    <button class="btn btn-primary" style="width:190px;" id = "gethasil2">Show Orami</button>
                 </div>
             </form>
-
-            <!-- Data tidak Ditemukan -->
-            <div id="nodata" style="display:none;margin-top: 20px; text-align: center;">
-                <h5>Maaf anda belum lolos tahap seleksi kali ini</h5>
-            </div>
-
-            <div id = "selamat" style = "display:none;margin-top:20px;text-align: center;">
-                <h5>Selamat anda lolos tahap seleksi kali ini</h5>
-            </div>
             
             <!-- Tabel Hasil -->                   
-            <table id="tabelhasil" class="table table-bordered" style="margin-top: 10px; width: 400px; text-align: center; margin-left: 275px;">
+            <table id="tabelhasil" class="table table-bordered" style="margin-top: 10px; width: 400px; text-align: center; margin-left: 275px; ">
                 <thead id="headtabelhasil">
                     <tr>
                         <th>Nama</th>
@@ -62,6 +54,16 @@
                 </thead>
                 <tbody id="bodyhasil"></tbody>
             </table>
+             <!-- Tabel Hasil -->                   
+             <table id="tabelhasil2" class="table table-bordered" style="margin-top: 10px; width: 400px; text-align: center; margin-left: 275px; ">
+                    <thead id="headtabelhasil2">
+                        <tr>
+                            <th>Nama</th>
+                            <th>Harga</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyhasil2"></tbody>
+                </table>
         </div>
         
  </div>
@@ -97,6 +99,30 @@ $("#gethasil").click(function() {
                         "</tr>"
                 });
                 $('#bodyhasil').html(content);
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        })
+})
+$("#gethasil2").click(function() {
+        tabmodiv=document.getElementById('bodyhasil2');
+            content=""
+            $.ajax({
+            url: 'http://54.88.35.235:8000/handuk',
+            type: 'get',
+            crossDomain: true,
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                $.each(response.slice(0, 20), function (key, value) {
+                    content+=
+                        "<tr>" +
+                            "<td>"+value.nama+"</th>\n" +
+                            "<td>"+value.harga+"</th>\n" +
+                        "</tr>"
+                });
+                $('#bodyhasil2').html(content);
             },
             error: function (response) {
                 console.log(response);
