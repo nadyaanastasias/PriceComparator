@@ -83,50 +83,64 @@
 <script>
 
 $(document).ready(function(){
-    
-    var price = [];
-    var productname = "aaa";
-    var highestprice = 0;
+
+    var bprice = [];
+    var bhighproductname = "aaa";
+    var bhighestprice = 0;
+
+    var blowproductname = "bbb";
+    var blowestprice = 100000000;
 
     $("#gethasil").click(function() {
             tabmodiv=document.getElementById('bodyhasil');
-                var endpoint = 'http://52.23.248.58:8080/tas';
                 content=""
                 $.ajax({
-                url: 'http://52.23.248.58:8080/tas',
-                type: 'get',
-                crossDomain: true,
-                dataType: 'json',
-                success: function (response) {
-                    console.log(response);
-                    $.each(response.slice(0, 20), function (key, value) {
-                        content+=
+                    url: 'http://3.227.193.57:3501/mainan',
+                    type: 'get',
+                    crossDomain: true,
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        $.each(response.slice(0, 20), function (key, value) {
+                            content+=
+                                "<tr>" +
+                                    "<td>"+value.nama+"</th>\n" +
+                                    "<td>"+value.harga+"</th>\n" +
+                                    bprice.push(value.harga);
+                                    if (value.harga > bhighestprice) {
+                                        bhighproductname = value.nama;
+                                        bhighestprice = value.harga;
+                                    };
+                                    if (value.harga < blowestprice) {
+                                        blowproductname = value.nama;
+                                        blowestprice = value.harga;
+                                    }
+                                "</tr>";
+                        });
+                        content += 
                             "<tr>" +
-                                "<td>"+value.nama+"</th>\n" +
-                                "<td>"+value.harga+"</th>\n" +
-                                price.push(value.harga);
-                                if (value.harga > highestprice) {
-                                    productname = value.nama;
-                                    highestprice = value.harga;
-                                }
+                                "<td>Product with <b>highest price<br>"+bhighproductname+"</b></th>\n" +
+                                "<td><b>"+bhighestprice+"</b></th>\n" +
+                            "</tr>"+
+                            "<tr>" +
+                                "<td>Product with <b>lowest price<br>"+blowproductname+"</b></th>\n" +
+                                "<td><b>"+blowestprice+"</b></th>\n" +
                             "</tr>";
-                    });
-                    content += 
-                        "<tr>" +
-                            "<td><b>Product with highest price<br>"+productname+"</b></th>\n" +
-                            "<td><b>"+highestprice+"</b></th>\n" +
-                        "</tr>";
-                    $('#bodyhasil').html(content);
-                    console.log(price);
-                    console.log(productname);
-                    console.log(highestprice);
-                },
-                error: function (response) {
-                    console.log(response);
-                    
-                }
-            })
+                        $('#bodyhasil').html(content);
+                    },
+                    error: function (response) {
+                        console.log(response);
+                        
+                    }
+                })
     })
+
+    var oprice = [];
+    var ohighproductname = "aaa";
+    var ohighestprice = 0;
+
+    var olowproductname = "bbb";
+    var olowestprice = 100000000;
 
     $("#gethasil2").click(function() {
         tabmodiv=document.getElementById('bodyhasil2');
@@ -143,8 +157,26 @@ $(document).ready(function(){
                             "<tr>" +
                                 "<td>"+value.nama+"</th>\n" +
                                 "<td>"+value.harga+"</th>\n" +
-                            "</tr>"
+                                oprice.push(value.harga);
+                                if (value.harga > ohighestprice) {
+                                    ohighproductname = value.nama;
+                                    ohighestprice = value.harga;
+                                };
+                                if (value.harga < olowestprice) {
+                                    olowproductname = value.nama;
+                                    olowestprice = value.harga;
+                                }
+                            "</tr>";
                     });
+                    content += 
+                        "<tr>" +
+                            "<td>Product with <b>highest price<br>"+ohighproductname+"</b></th>\n" +
+                            "<td><b>"+ohighestprice+"</b></th>\n" +
+                        "</tr>"+
+                        "<tr>" +
+                            "<td>Product with <b>lowest price<br>"+olowproductname+"</b></th>\n" +
+                            "<td><b>"+olowestprice+"</b></th>\n" +
+                        "</tr>";
                     $('#bodyhasil2').html(content);
                 },
                 error: function (response) {
@@ -153,43 +185,6 @@ $(document).ready(function(){
             })
     })
 })
-
-function getHighestPrice() {
-    var orami = Number($('#weight').html());
-    var bukalapak = Number($('#origin').val());
-    var destination = Number($('#destination').val());
-    var courier = $('#provider').val().toLowerCase();
-    console.log("weight: " + weight);
-    console.log("origin: " + origin);
-    console.log("destination: " + destination);
-    console.log("courier: " + courier);
-    $.ajax({
-        url: 'http://3.92.50.97:4040/api/cost',
-        type: 'post',
-        data: {
-            'origin': origin,
-            'destination': destination,
-            'weight': weight,
-            'courier': courier
-        },
-        success: function (response) {
-            $('#price').html(response);
-            var total = Number(response) + Number($('#product :selected').html().split('Rp ')[1]);
-            console.log("tes: " + Number($('#product :selected').html().split('Rp ')[1]));
-            console.log("total: " + total);
-            $('#totalPrice').html(total);
-            if (response !== 999 || response !== "999") {
-                $('#orderButton').disabled = false
-            } else {
-                $('#orderButton').disabled = true
-            }
-            console.log(response)
-        },
-        error: function (response) {
-            console.log(response)
-        }
-    })
-}
 
 </script>
 </body>
