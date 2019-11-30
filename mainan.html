@@ -136,10 +136,10 @@ $(document).ready(function(){
     })
 
     var oprice = [];
-    var ohighproductname = "aaa";
+    var ohighproductname = "ccc";
     var ohighestprice = 0;
 
-    var olowproductname = "bbb";
+    var olowproductname = "ddd";
     var olowestprice = 100000000;
 
     $("#gethasil2").click(function() {
@@ -156,18 +156,20 @@ $(document).ready(function(){
                         content+=
                             "<tr>" +
                                 "<td>"+value.nama+"</th>\n" +
-                                "<td>"+value.harga+"</th>\n" +
-                                oprice.push(value.harga);
-                                if (value.harga > ohighestprice) {
+                                "<td>"+value.harga.split('Rp ')[1]+"</th>\n" +
+                                oprice.push(parseFloat(value.harga.split('Rp ')[1]));
+                                harga = parseFloat(value.harga.split('Rp ')[1])*1000;
+                                if (harga > ohighestprice) {
                                     ohighproductname = value.nama;
-                                    ohighestprice = value.harga;
+                                    ohighestprice = harga;
                                 };
-                                if (value.harga < olowestprice) {
+                                if (harga < olowestprice) {
                                     olowproductname = value.nama;
-                                    olowestprice = value.harga;
+                                    olowestprice = harga;
                                 }
                             "</tr>";
                     });
+                    console.log(oprice);
                     content += 
                         "<tr>" +
                             "<td>Product with <b>highest price<br>"+ohighproductname+"</b></th>\n" +
