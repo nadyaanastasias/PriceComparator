@@ -89,7 +89,7 @@ $(document).ready(function(){
             tabmodiv=document.getElementById('bodyhasil');
                 content=""
                 $.ajax({
-                    url: 'http://3.227.193.57:3501/mainan',
+                    url: 'A',
                     type: 'get',
                     crossDomain: true,
                     dataType: 'json',
@@ -114,11 +114,11 @@ $(document).ready(function(){
                         content += 
                             "<tr>" +
                                 "<td>Product with <b>highest price<br>"+bhighproductname+"</b></th>\n" +
-                                "<td><b>"+bhighestprice+"</b></th>\n" +
+                                "<td><b> Rp "+bhighestprice+"</b></th>\n" +
                             "</tr>"+
                             "<tr>" +
                                 "<td>Product with <b>lowest price<br>"+blowproductname+"</b></th>\n" +
-                                "<td><b>"+blowestprice+"</b></th>\n" +
+                                "<td><b> Rp "+blowestprice+"</b></th>\n" +
                             "</tr>";
                         $('#bodyhasil').html(content);
                     },
@@ -150,8 +150,7 @@ $(document).ready(function(){
                         content+=
                             "<tr>" +
                                 "<td>"+value.nama+"</th>\n" +
-                                "<td> Rp 
-                                    "+value.harga.split('Rp ')[1]+"</th>\n" +
+                                "<td> Rp "+value.harga.split('Rp ')[1]+"</th>\n" +
                                 oprice.push(parseFloat(value.harga.split('Rp ')[1]));
                                 harga = parseFloat(value.harga.split('Rp ')[1])*1000;
                                 if (harga > ohighestprice) {
@@ -168,11 +167,11 @@ $(document).ready(function(){
                     content += 
                         "<tr>" +
                             "<td>Product with <b>highest price<br>"+ohighproductname+"</b></th>\n" +
-                            "<td><b>"+ohighestprice+"</b></th>\n" +
+                            "<td><b> Rp "+ohighestprice+"</b></th>\n" +
                         "</tr>"+
                         "<tr>" +
                             "<td>Product with <b>lowest price<br>"+olowproductname+"</b></th>\n" +
-                            "<td><b>"+olowestprice+"</b></th>\n" +
+                            "<td><b> Rp "+olowestprice+"</b></th>\n" +
                         "</tr>";
                     $('#bodyhasil2').html(content);
                 },
