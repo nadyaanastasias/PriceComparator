@@ -11,7 +11,7 @@ API Usage:
 - Orami API (Lidya Jessica 18217037) https://github.com/JESSICAHAN00/ProjectTST
 
 ### Why Price Comparator?
-##Make the world more just and fair
+## Make the world more just and fair
 We believed everyone should have enough information to make the best decision when spending money online. 
 Spend and shop online is very easy, but to get the most value is very hard. 
 User need to open many pages and go back and forth comparing all the price from one e-commerce to another
