@@ -47,7 +47,7 @@ In the future, PriceComparator will provide more categories and more e-commerce 
 |GET     | Show name and price from peralatan-mandi category http://54.88.35.235:8000/keperluan-mandi-bayi  ,http://3.227.193.57:3501/perlengkapanmandi
 |GET     | Show name and price from kereta-bayi category http://54.88.35.235:8000/kereta-bayi  ,http://3.227.193.57:3501/kereta-bayi
 
-##Log Act
+## Log Act
 nadya anastasia
 1. Make index.html and other pages layout template (handuk.html peralatan-mandi.html makanan-bayi.html mainan.html handuk.html)
 2. Make repo github
