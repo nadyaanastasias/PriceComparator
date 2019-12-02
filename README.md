@@ -41,11 +41,11 @@ In the future, PriceComparator will provide more categories and more e-commerce 
 ### API Documentation
 | Method | Deskripsi | Link |
 |--------|:---------:|------|
-|GET     | Show name and price from handuk category http://54.88.35.235:8000/handuk  ,http://3.227.193.57:3501/handuk
-|GET     | Show name and price from makanan-bayi category http://54.88.35.235:8000/makanan-bayi  ,http://3.227.193.57:3501/makananbayi
-|GET     | Show name and price from mainan category http://54.88.35.235:8000/mainan  ,http://3.227.193.57:3501/mainan
-|GET     | Show name and price from peralatan-mandi category http://54.88.35.235:8000/keperluan-mandi-bayi  ,http://3.227.193.57:3501/perlengkapanmandi
-|GET     | Show name and price from kereta-bayi category http://54.88.35.235:8000/kereta-bayi  ,http://3.227.193.57:3501/kereta-bayi
+|GET     | Show name and price from handuk category | http://54.88.35.235:8000/handuk , http://3.227.193.57:3501/handuk|
+|GET     | Show name and price from makanan-bayi category | http://54.88.35.235:8000/makanan-bayi  ,http://3.227.193.57:3501/makananbayi|
+|GET     | Show name and price from mainan category | http://54.88.35.235:8000/mainan  ,http://3.227.193.57:3501/mainan|
+|GET     | Show name and price from peralatan-mandi category | http://54.88.35.235:8000/keperluan-mandi-bayi  ,http://3.227.193.57:3501/perlengkapanmandi|
+|GET     | Show name and price from kereta-bayi category | http://54.88.35.235:8000/kereta-bayi  ,http://3.227.193.57:3501/kereta-bayi|
 
 ## Log Act
 nadya anastasia
