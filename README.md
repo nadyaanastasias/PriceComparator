@@ -49,7 +49,7 @@ In the future, PriceComparator will provide more categories and more e-commerce 
 
 ## Log Act
 nadya anastasia
-1. Make index.html and other pages layout template (handuk.html peralatan-mandi.html makanan-bayi.html mainan.html handuk.html)
+1. Make index.html and other pages layout template (handuk.html peralatan-mandi.html makanan-bayi.html mainan.html kereta-bayi.html)
 2. Make repo github
 3. Deploy API BukaLapak
 4. Make ajax file to called API
@@ -57,4 +57,12 @@ nadya anastasia
 6. Make Readme.md
 7. Testing webpage
 
+lidya jessica
+1. Make trello board and invite Nadya, add list for group project
+2. Add cards of what we plan to do on trello and set the due date, update it occasionally 
+3. Deploy API Orami
+4. Add coding to ajax file to get highest and lowest price from Bukalapak and Orami
+5. Adjust Orami price value that comes out as string, so it can be number value (float)
+6. Complete the ajax code in makanan-bayi.html mainan.html kereta-bayi.html
+7. Testing webpage
 
