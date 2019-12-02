@@ -30,38 +30,35 @@
             </div>
         </div>
     </nav>
-
     <div class="container">
-        <h2>Kategori Mainan</h2>
-            <div style="margin:40px;">
-            <div class="jumbotron"  style="padding:40px;margin-top:100px;">
-                <form method = "GET" action = "#">
-                    <div id ="tombolhasil" style="text-align: center; margin-top:35px">
-                        <button class="btn btn-primary" style="width:190px;" id = "gethasil">Show Bukalapak</button>
-                        <button class="btn btn-primary" style="width:190px;" id = "gethasil2">Show Orami</button>
-                    </div>
-                </form> 
-                
-                <!-- Tabel Hasil -->                   
-                <table id="tabelhasil" class="table table-bordered" style="margin-top: 10px; width: 400px; text-align: center; margin-left: 275px; ">
-                    <thead id="headtabelhasil">
-                        <tr>
-                            <th>Nama</th>
-                            <th>Harga</th>
-                        </tr>
-                    </thead>
-                    <tbody id="bodyhasil"></tbody>
-                </table>
-                <!-- Tabel Hasil -->                   
-                <table id="tabelhasil2" class="table table-bordered" style="margin-top: 10px; width: 400px; text-align: center; margin-left: 275px; ">
-                    <thead id="headtabelhasil2">
-                        <tr>
-                            <th>Nama</th>
-                            <th>Harga</th>
-                        </tr>
-                    </thead>
-                    <tbody id="bodyhasil2"></tbody>
-                </table>
+            <h2>Kategori Mainan</h2>
+                <div style="margin:40px;">
+                    <form method = "GET" action = "#">
+                        <div id ="tombolhasil" style="text-align: center; margin-top:35px">
+                            <button class="btn btn-primary" style="width:190px;" id = "gethasil">Show Bukalapak</button>
+                            <button class="btn btn-primary" style="width:190px;" id = "gethasil2">Show Orami</button>
+                        </div>
+                    </form>
+                    <!-- Tabel Hasil -->                   
+                    <table id="tabelhasil" class="table table-bordered" style="float:left; width: 400px; text-align: center; margin-top: 40px;">
+                        <thead id="headtabelhasil">
+                            <tr>
+                                <th>Nama</th>
+                                <th>Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bodyhasil"></tbody>
+                    </table>
+                     <!-- Tabel Hasil -->                   
+                     <table id="tabelhasil2" class="table table-bordered" style="float:right; width: 400px; text-align: center; margin-top: 40px; ">
+                            <thead id="headtabelhasil2">
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyhasil2"></tbody>
+                        </table>
             </div>
             </div>
     </div>
@@ -102,7 +99,7 @@ $(document).ready(function(){
                             content+=
                                 "<tr>" +
                                     "<td>"+value.nama+"</th>\n" +
-                                    "<td>"+value.harga+"</th>\n" +
+                                    "<td> Rp "+value.harga+"</th>\n" +
                                     bprice.push(value.harga);
                                     if (value.harga > bhighestprice) {
                                         bhighproductname = value.nama;
@@ -153,7 +150,8 @@ $(document).ready(function(){
                         content+=
                             "<tr>" +
                                 "<td>"+value.nama+"</th>\n" +
-                                "<td>"+value.harga.split('Rp ')[1]+"</th>\n" +
+                                "<td> Rp 
+                                    "+value.harga.split('Rp ')[1]+"</th>\n" +
                                 oprice.push(parseFloat(value.harga.split('Rp ')[1]));
                                 harga = parseFloat(value.harga.split('Rp ')[1])*1000;
                                 if (harga > ohighestprice) {

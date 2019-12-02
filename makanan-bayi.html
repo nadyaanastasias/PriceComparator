@@ -33,36 +33,35 @@
         </div>
     </nav>
 
-<div class="container">
-    <h2>Kategori Makanan Bayi</h2>
-        <div style="margin:40px;">
-            <form method = "GET" action = "#">
-                <div id ="tombolhasil" style="text-align: center; margin-top:35px">
-                    <button class="btn btn-primary" style="width:190px;" id = "gethasil">Show Bukalapak</button>
-                    <button class="btn btn-primary" style="width:190px;" id = "gethasil2">Show Orami</button>
-                </div>
-            </form>
-            <!-- Tabel Hasil -->                   
-            <table id="tabelhasil" class="table table-bordered" style="float:left; width: 400px; text-align: center; margin-top: 40px;">
-                <thead id="headtabelhasil">
-                    <tr>
-                        <th>Nama</th>
-                        <th>Harga</th>
-                    </tr>
-                </thead>
-                <tbody id="bodyhasil"></tbody>
-            </table>
-             <!-- Tabel Hasil -->                   
-             <table id="tabelhasil2" class="table table-bordered" style="float:right; width: 400px; text-align: center; margin-top: 40px; ">
-                    <thead id="headtabelhasil2">
-                        <tr>
-                            <th>Nama</th>
-                            <th>Harga</th>
-                        </tr>
-                    </thead>
-                    <tbody id="bodyhasil2"></tbody>
-                </table>
-  
+    <div class="container">
+            <h2>Kategori Makanan Bayi</h2>
+                <div style="margin:40px;">
+                    <form method = "GET" action = "#">
+                        <div id ="tombolhasil" style="text-align: center; margin-top:35px">
+                            <button class="btn btn-primary" style="width:190px;" id = "gethasil">Show Bukalapak</button>
+                            <button class="btn btn-primary" style="width:190px;" id = "gethasil2">Show Orami</button>
+                        </div>
+                    </form>
+                    <!-- Tabel Hasil -->                   
+                    <table id="tabelhasil" class="table table-bordered" style="float:left; width: 400px; text-align: center; margin-top: 40px;">
+                        <thead id="headtabelhasil">
+                            <tr>
+                                <th>Nama</th>
+                                <th>Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bodyhasil"></tbody>
+                    </table>
+                     <!-- Tabel Hasil -->                   
+                     <table id="tabelhasil2" class="table table-bordered" style="float:right; width: 400px; text-align: center; margin-top: 40px; ">
+                            <thead id="headtabelhasil2">
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyhasil2"></tbody>
+                        </table>
  </div>
 </div>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -77,112 +76,114 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script>
-    $(document).ready(function(){
-    
-        var bprice = [];
-        var bhighproductname = "aaa";
-        var bhighestprice = 0;
-    
-        var blowproductname = "bbb";
-        var blowestprice = 100000000;
-    
-        $("#gethasil").click(function() {
-                tabmodiv=document.getElementById('bodyhasil');
-                    content=""
-                    $.ajax({
-                        url: 'http://3.227.193.57:3501/makananbayi',
-                        type: 'get',
-                        crossDomain: true,
-                        dataType: 'json',
-                        success: function (response) {
-                            console.log(response);
-                            $.each(response.slice(0, 20), function (key, value) {
-                                content+=
-                                    "<tr>" +
-                                        "<td>"+value.nama+"</th>\n" +
-                                        "<td>"+value.harga+"</th>\n" +
-                                        bprice.push(value.harga);
-                                    "</tr>";
-                                    if (value.harga > bhighestprice) {
-                                            bhighproductname = value.nama;
-                                            bhighestprice = value.harga;
-                                        };
-                                        if (value.harga < blowestprice) {
-                                            blowproductname = value.nama;
-                                            blowestprice = value.harga;
-                                        }
-                            });
-                            content += 
-                                "<tr>" +
-                                    "<td>Product with <b>highest price<br>"+bhighproductname+"</b></th>\n" +
-                                    "<td><b>"+bhighestprice+"</b></th>\n" +
-                                "</tr>"+
-                                "<tr>" +
-                                    "<td>Product with <b>lowest price<br>"+blowproductname+"</b></th>\n" +
-                                    "<td><b>"+blowestprice+"</b></th>\n" +
-                                "</tr>";
-                            $('#bodyhasil').html(content);
-                        },
-                        error: function (response) {
-                            console.log(response);
-                            
-                        }
-                    })
-        })
-    
-        var oprice = [];
-        var ohighproductname = "ccc";
-        var ohighestprice = 0;
-    
-        var olowproductname = "ddd";
-        var olowestprice = 100000000;
-    
-        $("#gethasil2").click(function() {
-            tabmodiv=document.getElementById('bodyhasil2');
-                content=""
-                $.ajax({
-                    url: 'http://54.88.35.235:8000/makanan-bayi',
-                    type: 'get',
-                    crossDomain: true,
-                    dataType: 'json',
-                    success: function (response) {
-                        console.log(response);
-                        $.each(response.slice(0, 20), function (key, value) {
-                            content+=
-                                "<tr>" +
-                                    "<td>"+value.nama+"</th>\n" +
-                                    "<td>"+value.harga.split('Rp ')[1]+"</th>\n" +
-                                    oprice.push(parseFloat(value.harga.split('Rp ')[1]));
-                                    harga = parseFloat(value.harga.split('Rp ')[1])*1000;
-                                    if (harga > ohighestprice) {
-                                        ohighproductname = value.nama;
-                                        ohighestprice = harga;
-                                    };
-                                    if (harga < olowestprice) {
-                                        olowproductname = value.nama;
-                                        olowestprice = harga;
-                                    }
-                                "</tr>";
-                        });
-                        console.log(oprice);
-                        content += 
+
+$(document).ready(function(){
+
+var bprice = [];
+var bhighproductname = "aaa";
+var bhighestprice = 0;
+
+var blowproductname = "bbb";
+var blowestprice = 100000000;
+
+$("#gethasil").click(function() {
+        tabmodiv=document.getElementById('bodyhasil');
+            content=""
+            $.ajax({
+                url: 'http://3.227.193.57:3501/makananbayi',
+                type: 'get',
+                crossDomain: true,
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    $.each(response.slice(0, 20), function (key, value) {
+                        content+=
                             "<tr>" +
-                                "<td>Product with <b>highest price<br>"+ohighproductname+"</b></th>\n" +
-                                "<td><b>"+ohighestprice+"</b></th>\n" +
-                            "</tr>"+
-                            "<tr>" +
-                                "<td>Product with <b>lowest price<br>"+olowproductname+"</b></th>\n" +
-                                "<td><b>"+olowestprice+"</b></th>\n" +
+                                "<td>"+value.nama+"</th>\n" +
+                                "<td> Rp "+value.harga+"</th>\n" +
+                                bprice.push(value.harga);
+                                if (value.harga > bhighestprice) {
+                                    bhighproductname = value.nama;
+                                    bhighestprice = value.harga;
+                                };
+                                if (value.harga < blowestprice) {
+                                    blowproductname = value.nama;
+                                    blowestprice = value.harga;
+                                }
                             "</tr>";
-                        $('#bodyhasil2').html(content);
-                    },
-                    error: function (response) {
-                        console.log(response);
-                    }
-                })
+                    });
+                    content += 
+                        "<tr>" +
+                            "<td>Product with <b>highest price<br>"+bhighproductname+"</b></th>\n" +
+                            "<td><b>"+bhighestprice+"</b></th>\n" +
+                        "</tr>"+
+                        "<tr>" +
+                            "<td>Product with <b>lowest price<br>"+blowproductname+"</b></th>\n" +
+                            "<td><b>"+blowestprice+"</b></th>\n" +
+                        "</tr>";
+                    $('#bodyhasil').html(content);
+                },
+                error: function (response) {
+                    console.log(response);
+                    
+                }
+            })
+})
+
+var oprice = [];
+var ohighproductname = "ccc";
+var ohighestprice = 0;
+
+var olowproductname = "ddd";
+var olowestprice = 100000000;
+
+$("#gethasil2").click(function() {
+    tabmodiv=document.getElementById('bodyhasil2');
+        content=""
+        $.ajax({
+            url: 'http://54.88.35.235:8000/makanan-bayi',
+            type: 'get',
+            crossDomain: true,
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                $.each(response.slice(0, 20), function (key, value) {
+                    content+=
+                        "<tr>" +
+                            "<td>"+value.nama+"</th>\n" +
+                            "<td> Rp "+value.harga.split('Rp ')[1]+"</th>\n" +
+                            oprice.push(parseFloat(value.harga.split('Rp ')[1]));
+                            harga = parseFloat(value.harga.split('Rp ')[1])*1000;
+                            if (harga > ohighestprice) {
+                                ohighproductname = value.nama;
+                                ohighestprice = harga;
+                            };
+                            if (harga < olowestprice) {
+                                olowproductname = value.nama;
+                                olowestprice = harga;
+                            }
+                        "</tr>";
+                });
+                console.log(oprice);
+                content += 
+                    "<tr>" +
+                        "<td>Product with <b>highest price<br>"+ohighproductname+"</b></th>\n" +
+                        "<td><b>"+ohighestprice+"</b></th>\n" +
+                    "</tr>"+
+                    "<tr>" +
+                        "<td>Product with <b>lowest price<br>"+olowproductname+"</b></th>\n" +
+                        "<td><b>"+olowestprice+"</b></th>\n" +
+                    "</tr>";
+                $('#bodyhasil2').html(content);
+            },
+            error: function (response) {
+                console.log(response);
+            }
         })
-    })
-    
-    </script>
-    </body>
-    </html>    
+})
+})
+
+
+</script>
+</body>
+</html>
